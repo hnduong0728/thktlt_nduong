@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <math.h>
 #define MAX 100
-// nhap
 void nhapmt( double arr[MAX][MAX] , int n ){
-    for ( int i = 0 ; i < n ; i++ ){
-        for ( int j = 0 ; j < n ; j++ ){
-            scanf ("%lf", &arr[i][j] );
-        } 
-    }
+	int i , j;
+	for ( i = 0 ; i < n ; i++ ){
+		for ( j = 0 ; j < n ; j++ ){
+			scanf ("%lf", &arr[i][j] );
+		}
+	}
 }
-// in mang
-void inmatran( double arr[MAX][MAX] , int n ){
-    for ( int i = 0 ; i < n ; i++ ){
-        printf ("\n");
-        for ( int j = 0 ; j < n ; j++ ){
-            printf ("%.2lf ", arr[i][j] );
-        }
-    }
+//xuat ma tran
+void xuatmt( double arr[MAX][MAX] , int n ){
+	int i , j;
+	for ( i = 0 ; i < n ; i++ ){
+		for ( j = 0 ; j < n ; j++ ){
+			printf ("%lf ", arr[i][j] );
+		}
+		printf ("\n");
+	}
 }
 // tong tren duong cheo phu 
 void tong( double arr[MAX][MAX] , int n ){
@@ -26,39 +27,33 @@ void tong( double arr[MAX][MAX] , int n ){
     }
     printf ("%.2lf", tong );
 }
-//di chuyen phan tu
-void dichuyen( double arr[MAX][MAX] , double brr[MAX][MAX] , int n ){
-    for ( int i = 0 ; i < n ; i++ ){
-        for ( int j = 0 ; j < n ; j++ ){
-            brr[i][j] = arr[i][j];
-        }
-    }
-    for ( int i = 0 ; i < n ; i++ ){
-        double min = arr[i][0];
-        int hang=0;
-        for ( int j = 0 ; j < n ; j++ ){
-            if ( arr[i][j] < min ){
-                min = arr[i][j];
-                hang = j;
-            }
-        }
-        // doi phan tu be nhat
-        int b_j = n - 1 - i;
-        double temp = brr[i][b_j];
-        brr[i][b_j] = brr[i][hang];
-        brr[i][hang] = temp;
-    }
-    tong ( brr , n );
+//chuyen phan tu tren duong cheo phu
+void chuyen1( double arr[MAX][MAX] , int n ){
+	    int i , j;
+	    for ( i = 0 ; i < n ; i++ ){
+		    int cot=0;
+		    for ( j = 0 ; j < n ; j++ ){
+			    if ( arr[i][j] < arr[i][cot] ){
+				    cot = j;
+			    }
+		    }
+		    double temp = arr[i][n-1-i];
+		    arr[i][n-1-i] = arr[i][cot];
+		    arr[i][cot] = temp;
+	    }
+	    printf ("\nMa tran A sau khi doi:\n");
+	    xuatmt ( arr , n );
+        tong( arr , n );
 }
 //
 int main(){
     int n ;
-    double a[MAX][MAX] , b[MAX][MAX];
+    double a[MAX][MAX];
     scanf ("%d", &n);
 
     nhapmt( a , n );
-    inmatran ( a , n );
+    xuatmt ( a , n );
     printf ("\n");
-    dichuyen( a , b , n );
+    chuyen1( a , n );
     return 0;
 }
