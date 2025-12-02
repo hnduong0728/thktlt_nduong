@@ -1,30 +1,27 @@
 #include <stdio.h>
 #include <math.h>
 //phan tich nhan tu
-int nhantu( long long n ){
-    int dem2=0 , dem5=0 , i=2;
-    for ( i = 2 ; i <= sqrt(n) ; i++ ){
-        while ( n%i == 0 ){
-            if ( i == 2 ) dem2++;
-            if ( i == 5 ) dem5++;
-            n /= i;
-        }
+long long nhantu( long long n , int p ){
+    long long dem=0;
+    while ( n%p == 0 ){
+        dem++;
+        n /= p;
     }
-    if ( dem2 >= dem5 ) return dem5;
-    else return dem2;
+    return dem;
 }
 //
 int main(){
     long long n;
     scanf ("%lld", &n);
-    long long tich=1 , ketqua;
-
+    long long dem2=0 , dem5=0;
+   
     while ( n-- ){
         long long x;
         scanf ("%lld", &x);
-        tich *= x;
-        ketqua = nhantu( tich );
+        dem2 += nhantu( x , 2 );
+        dem5 += nhantu( x , 5 );     
     }
+    long long ketqua = ( dem2 < dem5 ) ? dem2 : dem5;
     printf ("%lld", ketqua );
     return 0;
 }
