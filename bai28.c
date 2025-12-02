@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <math.h>
+//sap xep
+int sapxep( const void *a , const void *b ){
+    return (long long*)a - (long long*)b;
+}
 // ucln
 long long ucln( long long a , long long b ){
     if ( a == b ) return a;
@@ -12,12 +16,13 @@ long long bcnn( long long a , long long b ){
 }
 //
 int main(){
-    long long n;
-    scanf ("%lld", &n );
-    long long a[100005];
-    long long i;
+    int n;
+    scanf ("%d", &n );
+    int a[10005];
+    int i;
 
     for ( i = 0 ; i < n ; i++ ) scanf ("%d", &a[i] );
+    qsort ( a , n , sizeof(long long) , sapxep );
     long long ketqua=a[0] , ketqua1=a[0];
     for ( i = 1 ; i < n ; i++ ){
         ketqua = ucln( ketqua , a[i] );
@@ -26,4 +31,3 @@ int main(){
     printf ("%lld %lld", ketqua, ketqua1);
     return 0;
 }
-
