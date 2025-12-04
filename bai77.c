@@ -25,7 +25,7 @@ void tong( double arr[MAX][MAX] , int n ){
     for ( int i = 0 ; i < n ; i++ ){
         tong += arr[i][n-1-i];
     }
-    printf ("%.2lf", tong );
+    printf ("\nTong tren duong cheo phu sau khi thay doi: %.2lf", tong );
 }
 //chuyen phan tu tren duong cheo phu
 void chuyen1( double arr[MAX][MAX] , int n ){
