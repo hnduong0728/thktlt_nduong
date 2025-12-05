@@ -15,8 +15,8 @@ long long bcnn(long long a, long long b) {
 }
 //
 int main() {
-    int n;
-    scanf("%d", &n);
+    long long n;
+    scanf("%lld", &n);
     long long a[10005];
     int i;
 
