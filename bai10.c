@@ -13,7 +13,7 @@ int main(){
     scanf ("%lf", &a);
     printf ("Nhap canh goc vuong tam giac: ");
     scanf ("%lf", &b);
-    if ( a < b ) printf ("Khong ton tai tam giac thoa de");
+    if ( a < b || a <= 0 || b <= 0 ) printf ("Khong ton tai tam giac thoa de");
     else bankinhnoitiep( a , b );
     return 0;
 }
